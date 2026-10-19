@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PraveenKumar A — Full Stack Software Engineer</title>
+    <meta
+      name="description"
+      content="PraveenKumar A is a Full Stack Software Engineer building hospitality platforms with React, TypeScript, Python, FastAPI, PostgreSQL and AWS."
+    />
+    <meta name="author" content="PraveenKumar A" />
+    <meta name="theme-color" content="#F7F4ED" />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
+    <!-- Hero portrait: start fetching before the app boots. -->
+    <link rel="preload" as="image" href="/img/Praveenkumar_2.webp" type="image/webp" fetchpriority="high" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="PraveenKumar A — Full Stack Software Engineer" />
+    <meta
+      property="og:description"
+      content="Building scalable hospitality platforms, business systems and AI-powered experiences with React, FastAPI, PostgreSQL and AWS."
+    />
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:title" content="PraveenKumar A — Full Stack Software Engineer" />
+    <meta
+      name="twitter:description"
+      content="Building scalable hospitality platforms, business systems and AI-powered experiences."
+    />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;600;700&display=swap"
+    />
+
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "PraveenKumar A",
+        "jobTitle": "Full Stack Software Engineer",
+        "worksFor": { "@type": "Organization", "name": "Revenue Maxima" },
+        "alumniOf": { "@type": "CollegeOrUniversity", "name": "Velammal Institute of Technology" }
+      }
+    </script>
+    <style>
+      #boot { position: fixed; inset: 0; z-index: 100; display: grid; place-content: center; justify-items: center; gap: 3rem;
+        background: #111820 radial-gradient(circle at center, rgba(49, 87, 213, 0.22), transparent 55%); }
+      .boot-folder { position: relative; width: min(22rem, 80vw); height: 10rem; border-radius: 1rem;
+        background: linear-gradient(135deg, #3157d5, #2443ad); box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.8);
+        animation: boot-breathe 1.6s ease-in-out infinite; }
+      .boot-tab { position: absolute; top: -1.5rem; left: 1rem; height: 1.75rem; padding: 0 0.875rem; display: flex; align-items: center;
+        border-radius: 0.75rem 0.75rem 0 0; background: #2443ad; color: rgba(255, 255, 255, 0.85);
+        font: 600 0.62rem/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing: 0.03em; }
+      .boot-name { position: absolute; left: 1.25rem; bottom: 1.5rem; color: #fff; font: 700 1.875rem/1 'Space Grotesk', system-ui, sans-serif; }
+      .boot-bar { width: min(18rem, 70vw); height: 4px; border-radius: 9999px; background: rgba(255, 255, 255, 0.1); overflow: hidden; }
+      .boot-bar span { display: block; height: 100%; width: 35%; border-radius: inherit; background: #3157d5; animation: boot-slide 1.2s ease-in-out infinite; }
+      @keyframes boot-breathe { 50% { transform: translateY(-4px); } }
+      @keyframes boot-slide { from { transform: translateX(-100%); } to { transform: translateX(290%); } }
+      @media (prefers-reduced-motion: reduce) { .boot-folder, .boot-bar span { animation: none; } }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <p style="padding:2rem;font-family:sans-serif">
+        This portfolio needs JavaScript to render all features.
+      </p>
+    </noscript>
+    <!-- Static first paint for the intro; React removes it when the animated loader mounts. -->
+    <div id="boot" aria-hidden="true">
+      <div class="boot-folder"><span class="boot-tab">PK / PORTFOLIO</span><span class="boot-name">PK.</span></div>
+      <div class="boot-bar"><span></span></div>
+    </div>
+    <script src="/boot.js"></script>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

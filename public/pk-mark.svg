@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <path d="M6 14a4 4 0 0 1 4-4h14l5 6h25a4 4 0 0 1 4 4v30a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#3157D5"/>
+  <path d="M6 22h52v28a4 4 0 0 1-4 4H10a4 4 0 0 1-4-4z" fill="#FFFEFA" stroke="#17212B" stroke-width="2.5"/>
+  <text x="32" y="46" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-weight="700" font-size="20" fill="#17212B">PK</text>
+</svg>
