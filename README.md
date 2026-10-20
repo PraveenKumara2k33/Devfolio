@@ -1,6 +1,6 @@
 # PraveenKumar A — Developer Portfolio
 
-> This repository is the new portfolio (v2). The previous version, built with React and JavaScript, is live at [apraveenkumar.netlify.app](https://apraveenkumar.netlify.app/) and appears in the Projects section as *Portfolio Website v1*.
+> This repository is the new portfolio (https://apraveenkumar-portfolio.netlify.app/). The previous version, built with React and JavaScript, is live at [apraveenkumar.netlify.app](https://apraveenkumar.netlify.app/) and appears in the Projects section as *Portfolio Website v1*.
 
 A personal portfolio for a full stack software engineer, designed as a set of folders and files. Each section opens like a document in a case file: projects are colour-coded folders on a sliding shelf, roles hang on a timeline rail, and education is a stack of certificates and mark sheets.
 
