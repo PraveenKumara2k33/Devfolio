@@ -2,7 +2,6 @@ import { useState, lazy, Suspense } from 'react'
 import {
   Boxes,
   LayoutGrid,
-  Orbit,
 } from 'lucide-react'
 import { motion, AnimatePresence } from 'motion/react'
 import { aiMatrix } from '../data/portfolio'
@@ -18,10 +17,7 @@ import { AiMatrix } from '../components/skills/AiMatrix'
 // Loaded on first use, so it stays out of the initial bundle.
 const SkillMarquee = lazy(() => import('../components/skills/SkillMarquee').then((m) => ({ default: m.SkillMarquee })))
 
-// Loaded on first use, so it stays out of the initial bundle.
-const SolarSystem = lazy(() => import('../components/skills/SolarSystem').then((m) => ({ default: m.SolarSystem })))
-
-// Skills shown in the List and Solar views, each filed under the domain it belongs to.
+// Skills shown in the List view, each filed under the domain it belongs to.
 const featured: [name: string, domain: DomainId, label?: string][] = [
   ['React.js', 'frontend'],
   ['TypeScript', 'frontend'],
@@ -64,18 +60,17 @@ const domainCounts = skillsList.reduce<Partial<Record<DomainId, number>>>((acc, 
 }, {})
 
 const stats: Stat[] = [
-  { value: skillsList.length, suffix: '+', label: 'Technologies', note: `across ${Object.keys(domainCounts).length} domains` },
+  { value: 15, suffix: '+', label: 'Technologies', note: `across ${Object.keys(domainCounts).length} domains` },
   { value: 2, suffix: '+', label: 'Years experience', note: 'internships to production SaaS' },
   { value: 6, suffix: '+', label: 'Projects built', note: 'personal and professional' },
   { value: 100, suffix: '%', label: 'Production ready', note: 'code written to ship' },
 ]
 
-type ViewMode = 'list' | 'solar' | 'dossier'
+type ViewMode = 'list' | 'dossier'
 
 const views: { id: ViewMode; label: string; icon: typeof Boxes }[] = [
   { id: 'dossier', label: 'Dossier', icon: Boxes },
   { id: 'list', label: 'List', icon: LayoutGrid },
-  { id: 'solar', label: 'Solar', icon: Orbit },
 ]
 
 export function SkillsSection() {
@@ -155,22 +150,6 @@ export function SkillsSection() {
             >
               <Suspense fallback={<div className="h-[32rem]" />}>
                 <SkillMarquee skills={skillsList} highlight={highlight} />
-              </Suspense>
-            </motion.div>
-          )}
-
-          {viewMode === 'solar' && (
-            /* Solar Orbit System (concentric rotating atomic orbits from Portfolio-main) */
-            <motion.div
-              key="solar-view"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.95 }}
-              transition={{ duration: 0.35 }}
-              className="flex w-full items-center justify-center"
-            >
-              <Suspense fallback={<div className="aspect-square w-full max-w-180 mx-auto" />}>
-                <SolarSystem skills={skillsList} highlight={highlight} />
               </Suspense>
             </motion.div>
           )}
