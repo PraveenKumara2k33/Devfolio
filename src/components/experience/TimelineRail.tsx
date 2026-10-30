@@ -65,7 +65,7 @@ function RailStop({ x, cursor, label, color }: { x: number; cursor: MotionValue<
       />
       <motion.span
         style={{ opacity: labelOpacity }}
-        className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-[0.68rem] font-semibold tracking-wider text-ink"
+        className="absolute bottom-3 left-1/2 -translate-x-1/2 whitespace-nowrap font-mono text-xs font-semibold tracking-wider text-ink"
       >
         {label}
       </motion.span>

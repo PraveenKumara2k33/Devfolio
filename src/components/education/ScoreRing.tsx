@@ -50,7 +50,7 @@ export function ScoreRing({ value, max, suffix = '', label, palette, run, size =
           {display}
           {suffix && <span style={{ fontSize: size * 0.13 }}>{suffix}</span>}
         </span>
-        <span className="mt-1 block font-mono text-[0.6rem] uppercase tracking-wider text-muted">{label}</span>
+        <span className="mt-1 block font-mono text-xs uppercase tracking-wider text-muted">{label}</span>
       </div>
       <span className="sr-only">
         {label}: {value}

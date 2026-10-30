@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { AnimatePresence, animate, motion, useReducedMotion } from 'motion/react'
 import { BookOpen, Briefcase, Cpu, FolderKanban, GraduationCap, Mail, User, type LucideIcon } from 'lucide-react'
 import { profile } from '../../data/portfolio'
+import { introSeenBefore, markIntroDone } from '../../lib/intro'
 
 // One file per section, in page order, each in its section colour.
 const files: { label: string; path: string; icon: LucideIcon; color: string }[] = [
@@ -16,17 +17,9 @@ const files: { label: string; path: string; icon: LucideIcon; color: string }[] 
 
 type Phase = 'fan' | 'gather' | 'open'
 
-const SESSION_KEY = 'devfolio:loaded'
-const FAN_MS = 2000
+// Plays on the first visit only (remembered in localStorage, see lib/intro.ts).
+const FAN_MS = 1100
 const ease = [0.22, 1, 0.36, 1] as const
-
-function seenThisSession() {
-  try {
-    return sessionStorage.getItem(SESSION_KEY) === '1'
-  } catch {
-    return false
-  }
-}
 
 /**
  * First-visit loader, staged like opening a case file:
@@ -38,16 +31,13 @@ function seenThisSession() {
  */
 export function LoadingScreen() {
   const reduce = useReducedMotion()
-  const [visible, setVisible] = useState(() => !seenThisSession())
+  const [visible, setVisible] = useState(() => !introSeenBefore())
   const [phase, setPhase] = useState<Phase>('fan')
   const [progress, setProgress] = useState(0)
 
   const finish = () => {
-    try {
-      sessionStorage.setItem(SESSION_KEY, '1')
-    } catch {
-      /* storage blocked: the loader will simply show again next visit */
-    }
+    // Lets the hero start its entrance while the loader zooms away.
+    markIntroDone()
     setVisible(false)
   }
 
@@ -64,12 +54,12 @@ export function LoadingScreen() {
     const timers = reduce
       ? [window.setTimeout(finish, fan + 150)]
       : [
-          window.setTimeout(() => setPhase('gather'), fan + 150),
-          window.setTimeout(() => setPhase('open'), fan + 650),
-          window.setTimeout(finish, fan + 1700),
+          window.setTimeout(() => setPhase('gather'), fan + 100),
+          window.setTimeout(() => setPhase('open'), fan + 420),
+          window.setTimeout(finish, fan + 1200),
         ]
 
-    // Any key or click skips the intro.
+    // Any key, click or tap skips the intro (there's no visible skip button).
     const skip = () => finish()
     window.addEventListener('keydown', skip)
     window.addEventListener('pointerdown', skip)
@@ -92,8 +82,7 @@ export function LoadingScreen() {
         <motion.div
           key="loader"
           role="status"
-          aria-live="polite"
-          aria-label={`Loading portfolio, ${progress}%`}
+          aria-label="Loading portfolio"
           exit={reduce ? { opacity: 0, transition: { duration: 0.25 } } : { opacity: 0, scale: 1.15, transition: { duration: 0.6, ease } }}
           className="fixed inset-0 z-100 grid place-items-center overflow-hidden bg-night text-white"
         >
@@ -155,18 +144,6 @@ export function LoadingScreen() {
               </div>
             </div>
           </div>
-
-          <motion.button
-            type="button"
-            onClick={finish}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.8 }}
-            className="absolute bottom-6 right-6 inline-flex items-center gap-2 rounded-full border border-white/15 px-3.5 py-1.5 font-mono text-[0.68rem] text-white/60 transition-colors hover:border-white/35 hover:text-white"
-          >
-            Skip intro
-            <kbd className="rounded border border-white/20 px-1 text-[0.6rem]">any key</kbd>
-          </motion.button>
         </motion.div>
       )}
     </AnimatePresence>
@@ -226,7 +203,7 @@ function FileFan({ shown, phase, reduce }: { shown: number; phase: Phase; reduce
                   <span className="h-0.5 w-1/2 rounded-full bg-ink/10" />
                 </span>
               </div>
-              <span className="pb-1.5 text-center font-mono text-[0.55rem] text-muted">{String(i + 1).padStart(2, '0')}</span>
+              <span className="pb-1.5 text-center font-mono text-micro text-muted">{String(i + 1).padStart(2, '0')}</span>
             </div>
           </motion.div>
         )
@@ -242,13 +219,13 @@ function CaseFolder({ phase, reduce }: { phase: Phase; reduce: boolean }) {
   return (
     <div className="absolute inset-x-0 bottom-0 z-20 mx-auto h-[46%] w-full max-w-[22rem]" style={{ transformStyle: 'preserve-3d' }}>
       {/* Tab */}
-      <div className="absolute -top-6 left-4 z-0 flex h-7 items-center rounded-t-xl bg-folder-deep px-3.5 font-mono text-[0.62rem] font-semibold tracking-wide text-white/85">
+      <div className="absolute -top-6 left-4 z-0 flex h-7 items-center rounded-t-xl bg-folder-deep px-3.5 font-mono text-micro font-semibold tracking-wide text-white/85">
         PK / PORTFOLIO
       </div>
 
       {/* Title page, revealed when the cover opens */}
       <div className="absolute inset-0 flex flex-col justify-center rounded-2xl bg-sheet px-6 text-ink shadow-[0_30px_60px_-20px_rgb(0_0_0/0.8)]">
-        <p className="font-mono text-[0.6rem] uppercase tracking-[0.2em] text-folder">Case file · engineering</p>
+        <p className="font-mono text-micro uppercase tracking-[0.2em] text-folder">Case file · engineering</p>
         <p className="mt-1.5 font-display text-2xl font-bold leading-tight">{profile.name}</p>
         <p className="text-sm text-muted">{profile.title}</p>
         <motion.span
@@ -266,7 +243,7 @@ function CaseFolder({ phase, reduce }: { phase: Phase; reduce: boolean }) {
         style={{ transformOrigin: 'left center', transformStyle: 'preserve-3d' }}
         initial={false}
         animate={opening && !reduce ? { rotateY: -150 } : { rotateY: 0 }}
-        transition={{ duration: 1, ease: [0.65, 0, 0.35, 1] }}
+        transition={{ duration: 0.75, ease: [0.65, 0, 0.35, 1] }}
       >
         <div
           className="absolute inset-0 flex flex-col justify-between overflow-hidden rounded-2xl bg-gradient-to-br from-folder via-folder to-folder-deep p-5 shadow-[inset_0_1px_0_rgb(255_255_255/0.3)]"
@@ -274,13 +251,13 @@ function CaseFolder({ phase, reduce }: { phase: Phase; reduce: boolean }) {
         >
           <div aria-hidden="true" className="paper-grain pointer-events-none absolute inset-0 opacity-60 mix-blend-overlay" />
           <div aria-hidden="true" className="absolute left-1/2 top-0 h-2.5 w-16 -translate-x-1/2 rounded-b-full bg-black/20" />
-          <div className="relative flex items-center justify-between font-mono text-[0.6rem] uppercase tracking-wider text-white/70">
+          <div className="relative flex items-center justify-between font-mono text-micro uppercase tracking-wider text-white/70">
             <span>Confidential · portfolio</span>
             <span>{files.length} files</span>
           </div>
           <div className="relative">
             <p className="font-display text-3xl font-bold leading-none text-white">PK.</p>
-            <p className="mt-1 font-mono text-[0.65rem] text-white/70">{profile.name}</p>
+            <p className="mt-1 font-mono text-micro text-white/70">{profile.name}</p>
           </div>
         </div>
         {/* Inside of the cover */}
@@ -291,7 +268,7 @@ function CaseFolder({ phase, reduce }: { phase: Phase; reduce: boolean }) {
         >
           <div className="paper-grain absolute inset-0 opacity-50 mix-blend-overlay" />
           <div className="absolute inset-x-6 bottom-5 top-5 rounded-xl border border-dashed border-white/20" />
-          <p className="absolute bottom-7 right-8 font-mono text-[0.55rem] uppercase tracking-wider text-white/40">property of PK</p>
+          <p className="absolute bottom-7 right-8 font-mono text-micro uppercase tracking-wider text-white/40">property of PK</p>
         </div>
       </motion.div>
     </div>

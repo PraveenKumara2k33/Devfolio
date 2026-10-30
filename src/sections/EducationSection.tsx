@@ -88,7 +88,7 @@ export function EducationSection() {
             <FolderOpen size={15} aria-hidden="true" />
             education / <span className="font-semibold">{shortName(level).toLowerCase().replace(/\W+/g, '-')}</span> /
           </p>
-          <p className="font-mono text-[0.68rem] text-muted">
+          <p className="font-mono text-xs text-muted">
             {docs.length} documents · {level.period}
           </p>
         </div>
@@ -141,7 +141,7 @@ function DocsGrid({ docs, run }: { docs: Doc[]; run: boolean }) {
           className={`ruled relative rounded-2xl border border-line bg-sheet p-4 shadow-[0_14px_30px_-20px_rgb(17_24_32/0.55)] sm:p-5 ${d.span}`}
         >
           {d.clip && <PaperClip />}
-          <header className="mb-4 flex items-center gap-2 border-b border-dashed border-line pb-2.5 font-mono text-[0.68rem] font-semibold text-muted">
+          <header className="mb-4 flex items-center gap-2 border-b border-dashed border-line pb-2.5 font-mono text-xs font-semibold text-muted">
             <d.icon size={14} aria-hidden="true" />
             {d.file}
           </header>
@@ -185,7 +185,7 @@ function docsFor(e: Education, palette: FolderPalette): Doc[] {
             <p className="mt-1 text-sm font-medium" style={{ color: palette.accent }}>
               {e.institution}
             </p>
-            <p className="mt-2 inline-flex items-center gap-1.5 font-mono text-[0.68rem] text-muted">
+            <p className="mt-2 inline-flex items-center gap-1.5 font-mono text-xs text-muted">
               <Calendar size={12} aria-hidden="true" />
               {e.period}
             </p>
@@ -226,7 +226,7 @@ function docsFor(e: Education, palette: FolderPalette): Doc[] {
         <ul className="grid gap-2 sm:grid-cols-2">
           {e.subjects!.map((s, i) => (
             <li key={s} className="flex items-center gap-2.5 text-sm text-ink/85">
-              <span className="grid size-6 shrink-0 place-items-center rounded-md font-mono text-[0.6rem] font-bold" style={{ background: palette.tint, color: palette.deep }}>
+              <span className="grid size-6 shrink-0 place-items-center rounded-md font-mono text-xs font-bold" style={{ background: palette.tint, color: palette.deep }}>
                 {String(i + 1).padStart(2, '0')}
               </span>
               {s}
@@ -247,7 +247,7 @@ function docsFor(e: Education, palette: FolderPalette): Doc[] {
       body: () => (
         <a href="#publications" className="group block">
           <span
-            className="inline-flex items-center gap-1.5 rounded-lg border-2 border-dashed px-2.5 py-1 font-mono text-[0.68rem] font-bold uppercase tracking-wider"
+            className="inline-flex items-center gap-1.5 rounded-lg border-2 border-dashed px-2.5 py-1 font-mono text-xs font-bold uppercase tracking-wider"
             style={{ borderColor: palette.accent, color: palette.deep }}
           >
             <Award size={14} aria-hidden="true" />
@@ -285,7 +285,7 @@ function Stamp({ palette, label }: { palette: FolderPalette; label: string }) {
       initial={{ opacity: 0, scale: reduce ? 1 : 1.6, rotate: -16 }}
       animate={{ opacity: 0.85, scale: 1, rotate: -9 }}
       transition={{ type: 'spring', stiffness: 260, damping: 14, delay: 0.55 }}
-      className="mt-4 inline-block rounded-md border-2 px-2 py-0.5 font-mono text-[0.7rem] font-bold uppercase tracking-[0.2em]"
+      className="mt-4 inline-block rounded-md border-2 px-2 py-0.5 font-mono text-xs font-bold uppercase tracking-[0.2em]"
       style={{ borderColor: palette.accent, color: palette.accent }}
     >
       {label}

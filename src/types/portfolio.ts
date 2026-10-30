@@ -29,18 +29,29 @@ export interface Profile {
   company: string
   tagline: string
   intro: string
-  about: string[]
   email: string
   resumeUrl: string
   /** Name the browser saves the resume under. */
   resumeFileName: string
   photoUrl: string
   availability?: string
-  focus: string[]
-  mindset: string[]
-  interests: string[]
-  aiDirection: string[]
   closingLine: string
+}
+
+/** Content for the About section: a profile page beside a small book of documents. */
+export interface AboutContent {
+  role: string
+  /** Small badge beside the role. */
+  specialty: string
+  facts: { value: string; label: string }[]
+  focus: string[]
+  interests: string[]
+  /** profile.md */
+  memo: { subject: string; paragraphs: string[]; highlights: string[] }
+  /** approach.flow */
+  approach: { title: string; subtitle: string; steps: string[] }
+  /** ai_direction.ipynb */
+  ai: { title: string; subtitle: string; items: string[] }
 }
 
 export interface SkillGroup {

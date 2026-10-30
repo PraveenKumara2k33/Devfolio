@@ -4,6 +4,7 @@
  * value is unknown it is left undefined and the UI hides it.
  */
 import type {
+  AboutContent,
   Education,
   NavTab,
   Profile,
@@ -32,55 +33,80 @@ export const profile: Profile = {
   tagline:
     'Building scalable hospitality platforms, intelligent business systems, and AI-powered digital experiences.',
   intro:
-    'I build reliable web applications end to end — from database design and FastAPI services to React interfaces and cloud deployment. Currently engineering a unified, full-stack hospitality platform.',
-  about: [
-    'I am a Software Engineer focused on building scalable, reliable, and user-centric web applications. My experience spans frontend development, backend API engineering, database design, and deployment workflows, using React.js, TypeScript, Python, FastAPI, PostgreSQL, and Docker.',
-    'I have hands-on experience developing hospitality technology — booking engines, property management systems, and customer relationship management platforms. I enjoy translating business requirements into practical software, designing maintainable architectures, and solving real-world engineering problems.',
-    'I am continuously strengthening my foundations in data structures and algorithms, system design, software testing, and cloud technologies. My goal is to build impactful products, contribute to high-performing engineering teams, and ship software that creates measurable business value.',
-  ],
+    'I build reliable web applications end to end, with a backend-first mindset: database design, FastAPI services and cloud deployment, with clean React interfaces on top. Currently engineering a unified hospitality platform.',
   email: 'apraveenkumar720@gmail.com',
   resumeUrl: '/img/PraveenKumar_A_Resume.pdf',
   resumeFileName: 'PraveenKumar_A_Resume.pdf',
   photoUrl: '/img/Praveenkumar_2.webp',
   availability: undefined,
-  focus: ['React', 'TypeScript', 'Python', 'FastAPI', 'PostgreSQL', 'AWS', 'API Architecture', 'AI Applications'],
-  mindset: [
-    'Business requirement',
-    'System & data design',
-    'Backend architecture',
-    'API development',
-    'Frontend engineering',
-    'Third-party integrations',
-    'Testing & optimization',
-    'Cloud deployment',
-    'Production software',
-  ],
-  interests: [
-    'Full Stack Engineering',
-    'Backend Architecture',
-    'System Design',
-    'Scalable SaaS Platforms',
-    'API Engineering',
-    'Cloud Architecture',
-    'AI Application Development',
-    'Intelligent Automation',
-    'Hospitality Technology',
-    'Data-driven Products',
-  ],
-  aiDirection: [
-    'AI hospitality assistants',
-    'Guest concierge systems',
-    'Guest sentiment analysis',
-    'Personalized recommendations',
-    'CRM next-best-action',
-    'AI-assisted support',
-    'Automated workflows',
-    'Natural-language interfaces',
-    'LLM-powered internal tools',
-    'Revenue intelligence',
-  ],
   closingLine: 'Build with purpose. Engineer for scale. Use AI where it creates real value.',
 }
+
+/** About section: profile page plus three documents (memo, approach, AI direction). */
+export const about: AboutContent = {
+  role: 'Full Stack Software Engineer',
+  specialty: 'Backend focus',
+  facts: [
+    { value: '2+ yrs', label: 'building production software' },
+    { value: 'B.Tech', label: 'IT · CGPA 8.56' },
+    { value: 'IEEE', label: 'paper published 2023' },
+  ],
+  focus: ['Python', 'FastAPI', 'Java', 'Spring Boot', 'PostgreSQL', 'Docker', 'Nginx', 'AWS', 'REST APIs', 'JWT Auth'],
+  interests: [
+    'Backend Architecture',
+    'System Design',
+    'Distributed Systems',
+    'API Design & Security',
+    'Database Performance',
+    'Concurrency & Async Processing',
+    'Event-driven Architecture',
+    'Cloud Infrastructure',
+    'Observability & Reliability',
+    'AI Backend Engineering',
+  ],
+  memo: {
+    subject: 'Who I am and how I work',
+    paragraphs: [
+      'I am a Software Engineer focused on building scalable, reliable, and user-centric web applications. My experience spans frontend development, backend API engineering, database design, and deployment workflows, using React.js, TypeScript, Python, FastAPI, PostgreSQL, and Docker.',
+      'I have hands-on experience developing hospitality technology — booking engines, property management systems, and customer relationship management platforms. I enjoy translating business requirements into practical software, designing maintainable architectures, and solving real-world engineering problems.',
+      'I am continuously strengthening my foundations in data structures and algorithms, system design, software testing, and cloud technologies. My goal is to build impactful products, contribute to high-performing engineering teams, and ship software that creates measurable business value.',
+    ],
+    highlights: ['scalable, reliable, and user-centric', 'hospitality technology', 'measurable business value'],
+  },
+  approach: {
+    title: 'How I approach a feature',
+    subtitle: 'From requirement to running in production.',
+    steps: [
+      'Business requirement',
+      'System & data design',
+      'Backend architecture',
+      'API development',
+      'Frontend engineering',
+      'Third-party integrations',
+      'Testing & optimization',
+      'Cloud deployment',
+      'Production software',
+    ],
+  },
+  ai: {
+    title: 'AI engineering direction',
+    subtitle: 'Combining AI with enterprise software to move beyond traditional CRUD workflows.',
+    items: [
+      'AI hospitality assistants',
+      'Guest concierge systems',
+      'Guest sentiment analysis',
+      'Personalized recommendations',
+      'CRM next-best-action',
+      'AI-assisted support',
+      'Automated workflows',
+      'Natural-language interfaces',
+      'LLM-powered internal tools',
+      'Revenue intelligence',
+    ],
+  },
+}
+
+
 
 export const socialLinks: SocialLink[] = [
   { label: 'LinkedIn', handle: 'praveenkumar2k33', icon: 'linkedin', url: 'https://www.linkedin.com/in/praveenkumar2k33/' },
@@ -161,7 +187,7 @@ export const skillGroups: SkillGroup[] = [
     icon: 'cloud',
     primary: [
       { label: 'AWS', items: ['ECS Fargate', 'S3', 'CloudFront', 'API Gateway', 'KMS'] },
-      { label: 'Tooling', items: ['Docker', 'Git', 'GitHub', 'Postman'] },
+      { label: 'Tooling', items: ['Docker', 'Nginx', 'Git', 'GitHub', 'Postman'] },
     ],
     capabilities: [
       'Containerized apps',

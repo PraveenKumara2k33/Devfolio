@@ -68,7 +68,7 @@ function PaperFile({ pub, index }: { pub: Publication; index: number }) {
           <PaperStack pub={pub} palette={palette} />
 
           <motion.div variants={list} initial="hidden" animate={inView ? 'show' : 'hidden'} className="min-w-0">
-            <motion.p variants={item} className="inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-[0.68rem] font-semibold" style={{ background: palette.tint, color: palette.deep }}>
+            <motion.p variants={item} className="inline-flex items-center gap-2 rounded-full px-3 py-1 font-mono text-xs font-semibold" style={{ background: palette.tint, color: palette.deep }}>
               <span className="size-1.5 rounded-full" style={{ background: palette.accent }} />
               Peer-reviewed · {pub.year}
             </motion.p>
@@ -80,7 +80,7 @@ function PaperFile({ pub, index }: { pub: Publication; index: number }) {
             <motion.dl variants={item} className="mt-6 grid grid-cols-2 gap-2">
               {meta.map(({ icon: Icon, label, value }) => (
                 <div key={label} className="rounded-xl border border-line bg-paper/60 px-3 py-2.5">
-                  <dt className="flex items-center gap-1.5 font-mono text-[0.6rem] uppercase tracking-wider text-muted">
+                  <dt className="flex items-center gap-1.5 font-mono text-xs uppercase tracking-wider text-muted">
                     <Icon size={11} aria-hidden="true" />
                     {label}
                   </dt>
@@ -92,7 +92,7 @@ function PaperFile({ pub, index }: { pub: Publication; index: number }) {
             </motion.dl>
 
             <motion.div variants={item} className="mt-6">
-              <h4 className="flex items-center gap-2 font-mono text-[0.7rem] font-semibold uppercase tracking-wider text-muted">
+              <h4 className="flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-wider text-muted">
                 <BookOpenText size={13} aria-hidden="true" />
                 Abstract
               </h4>

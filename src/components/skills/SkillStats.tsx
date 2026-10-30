@@ -53,7 +53,7 @@ export function SkillStats({ stats }: { stats: Stat[] }) {
                 <Icon size={17} aria-hidden="true" />
               </span>
             </div>
-            <p className="relative mt-4 font-mono text-[0.7rem] font-semibold uppercase tracking-wider text-ink">{stat.label}</p>
+            <p className="relative mt-4 font-mono text-xs font-semibold uppercase tracking-wider text-ink">{stat.label}</p>
             <p className="relative mt-1 text-xs text-muted">{stat.note}</p>
           </motion.li>
         )

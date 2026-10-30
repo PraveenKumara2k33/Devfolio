@@ -112,7 +112,7 @@ export function SkillDossier() {
                 <Icon size={15} aria-hidden="true" />
                 <span className="whitespace-nowrap">{m.short}</span>
                 <span
-                  className="rounded-full px-1.5 py-px font-mono text-[0.62rem]"
+                  className="rounded-full px-1.5 py-px font-mono text-xs"
                   style={active ? { background: 'rgb(255 255 255 / 0.2)' } : { background: '#fff', color: m.palette.deep }}
                 >
                   {countOf(g)}
@@ -180,7 +180,7 @@ export function SkillDossier() {
             <ArrowLeft size={15} aria-hidden="true" className="transition-transform group-hover:-translate-x-0.5" />
             <span className="hidden min-[400px]:inline">{domains[prev.icon].short}</span>
           </button>
-          <span className="font-mono text-[0.7rem] text-white/75">
+          <span className="font-mono text-xs text-white/75">
             {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
             <span className="hidden sm:inline"> · ← → to flip</span>
           </span>
@@ -214,7 +214,7 @@ function SheetBody({ group, palette }: { group: SkillGroup; palette: FolderPalet
           <Icon size={22} aria-hidden="true" />
         </span>
         <h3 className="relative mt-5 text-2xl font-semibold tracking-tight sm:text-3xl">{group.title}</h3>
-        <p className="relative mt-2 flex flex-wrap gap-2 font-mono text-[0.68rem]">
+        <p className="relative mt-2 flex flex-wrap gap-2 font-mono text-xs">
           <span className="rounded-full px-2 py-0.5" style={{ background: palette.tint, color: palette.deep }}>
             {countOf(group)} {hasTools ? 'technologies' : 'focus areas'}
           </span>
@@ -222,7 +222,7 @@ function SheetBody({ group, palette }: { group: SkillGroup; palette: FolderPalet
         </p>
 
         <div className="relative mt-7 rounded-2xl p-4 sm:p-5" style={{ background: palette.tint }}>
-          <h4 className="font-mono text-[0.68rem] font-semibold uppercase tracking-wider" style={{ color: palette.deep }}>
+          <h4 className="font-mono text-xs font-semibold uppercase tracking-wider" style={{ color: palette.deep }}>
             What I do with it
           </h4>
           <motion.ul variants={list} initial="hidden" animate="show" className="mt-3 space-y-2">
@@ -242,7 +242,7 @@ function SheetBody({ group, palette }: { group: SkillGroup; palette: FolderPalet
       <div className="relative space-y-7">
         {group.primary.map((g) => (
           <section key={g.label} aria-label={g.label}>
-            <h4 className="mb-3 flex items-center gap-3 font-mono text-[0.68rem] font-semibold uppercase tracking-wider">
+            <h4 className="mb-3 flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-wider">
               <span className="rounded-md px-2 py-0.5" style={{ background: palette.tint, color: palette.deep }}>
                 {g.label} · {g.items.length}
               </span>
@@ -272,7 +272,7 @@ function SheetBody({ group, palette }: { group: SkillGroup; palette: FolderPalet
                     <span className="min-w-0">
                       <span className="block text-[0.8rem] font-medium leading-tight text-ink group-hover:text-[var(--tile-accent)] sm:text-[0.85rem]">{item}</span>
                       {where.length > 0 && (
-                        <span className="mt-0.5 block truncate font-mono text-[0.62rem] text-muted">
+                        <span className="mt-0.5 block truncate font-mono text-xs text-muted">
                           {where[0]}
                           {where.length > 1 && ` +${where.length - 1}`}
                         </span>

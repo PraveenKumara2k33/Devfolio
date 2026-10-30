@@ -8,7 +8,6 @@ import { aiMatrix } from '../data/portfolio'
 import { TornSection } from '../components/folder/TornSection'
 import { SectionHeader } from '../components/folder/SectionHeader'
 import { getSkillLogo } from '../lib/skillLogos'
-import { SkillLegend } from '../components/skills/SkillLegend'
 import { domains, type DomainId, type SkillItem } from '../components/skills/skillDomains'
 import { SkillDossier } from '../components/skills/SkillDossier'
 import { SkillStats, type Stat } from '../components/skills/SkillStats'
@@ -42,6 +41,7 @@ const featured: [name: string, domain: DomainId, label?: string][] = [
   ['Oracle', 'database'],
   ['AWS', 'cloud'],
   ['Docker', 'cloud'],
+  ['Nginx', 'cloud', 'Web server'],
   ['Git', 'cloud', 'Tooling'],
   ['GitHub', 'cloud', 'Tooling'],
   ['Postman', 'cloud', 'Tooling'],
@@ -69,14 +69,13 @@ const stats: Stat[] = [
 type ViewMode = 'list' | 'dossier'
 
 const views: { id: ViewMode; label: string; icon: typeof Boxes }[] = [
-  { id: 'dossier', label: 'Dossier', icon: Boxes },
-  { id: 'list', label: 'List', icon: LayoutGrid },
+  { id: 'dossier', label: 'Categories', icon: Boxes },
+  { id: 'list', label: 'All skills', icon: LayoutGrid },
 ]
 
 export function SkillsSection() {
   const [viewMode, setViewMode] = useState<ViewMode>('dossier')
 
-  const [highlight, setHighlight] = useState<DomainId | null>(null)
 
   return (
     <TornSection id="skills" tone="paper" seed={53}>
@@ -119,23 +118,6 @@ export function SkillsSection() {
         </div>
       </div>
 
-      <AnimatePresence initial={false}>
-        {viewMode !== 'dossier' && (
-          <motion.div
-            key="legend"
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            transition={{ duration: 0.3 }}
-            className="overflow-hidden"
-          >
-            <div className="pb-8">
-              <SkillLegend counts={domainCounts} active={highlight} onChange={setHighlight} />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-
       {/* Main Interactive Skill View */}
       <div className="w-full">
         <AnimatePresence mode="wait">
@@ -148,8 +130,8 @@ export function SkillsSection() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.35 }}
             >
-              <Suspense fallback={<div className="h-[32rem]" />}>
-                <SkillMarquee skills={skillsList} highlight={highlight} />
+              <Suspense fallback={<div className="h-96" />}>
+                <SkillMarquee skills={skillsList} />
               </Suspense>
             </motion.div>
           )}

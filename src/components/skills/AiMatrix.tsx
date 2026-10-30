@@ -57,10 +57,10 @@ export function AiMatrix({ rows }: AiMatrixProps) {
           </span>
           <div>
             <h3 className="text-lg font-semibold text-white sm:text-xl">AI × Hospitality Integration Matrix</h3>
-            <p className="font-mono text-[0.7rem] text-white/70">operational mapping to hotel platforms</p>
+            <p className="font-mono text-xs text-white/70">operational mapping to hotel platforms</p>
           </div>
         </div>
-        <p className="hidden font-mono text-[0.68rem] uppercase tracking-wider text-white/70 sm:block">
+        <p className="hidden font-mono text-xs uppercase tracking-wider text-white/70 sm:block">
           capability <ArrowRight size={11} className="inline" aria-hidden="true" /> application
         </p>
       </div>
@@ -89,7 +89,7 @@ export function AiMatrix({ rows }: AiMatrixProps) {
                   <Icon size={18} aria-hidden="true" />
                 </span>
                 <div className="min-w-0">
-                  <p className="font-mono text-[0.6rem] text-muted">{String(i + 1).padStart(2, '0')}</p>
+                  <p className="font-mono text-xs text-muted">{String(i + 1).padStart(2, '0')}</p>
                   <p className="text-sm font-semibold leading-tight" style={{ color: deep }}>
                     {r.capability}
                   </p>

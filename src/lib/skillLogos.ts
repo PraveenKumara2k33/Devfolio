@@ -58,6 +58,8 @@ export const skillLogos: Record<string, string> = {
   'API Gateway': '/assets/skills/awsblack.svg',
   'KMS': '/assets/skills/awsblack.svg',
   'Docker': '/assets/skills/Docker.svg',
+  'Nginx': '/assets/skills/Nginx.svg',
+  'NGINX': '/assets/skills/Nginx.svg',
   'Git': '/assets/skills/git-merge.svg',
   'GitHub': '/assets/skills/github.svg',
   'Postman': '/assets/skills/postman.svg',

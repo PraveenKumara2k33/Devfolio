@@ -78,7 +78,7 @@ export function FolderTabs({
 
                 <div className="flex items-center gap-2">
                   <span
-                    className={`font-mono text-[10px] rounded px-1.5 py-0.5 transition-colors ${
+                    className={`font-mono text-xs rounded px-1.5 py-0.5 transition-colors ${
                       isActive
                         ? 'bg-folder/15 text-folder-deep font-bold'
                         : 'bg-line/40 text-muted group-hover:bg-line/80 group-hover:text-ink'

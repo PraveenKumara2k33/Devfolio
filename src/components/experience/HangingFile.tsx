@@ -63,7 +63,7 @@ export function HangingFile({ role, index, year, tags, focus, offset, shift, onO
 
       {/* Index tab */}
       <div
-        className="absolute -top-8 z-0 flex h-9 items-center gap-1.5 rounded-t-xl px-3.5 font-mono text-[0.7rem] font-bold text-white"
+        className="absolute -top-8 z-0 flex h-9 items-center gap-1.5 rounded-t-xl px-3.5 font-mono text-xs font-bold text-white"
         style={{ left: tabLeft, background: c.deep }}
       >
         {role.current && <span className="size-1.5 animate-pulse rounded-full bg-emerald-300" />}
@@ -83,18 +83,18 @@ export function HangingFile({ role, index, year, tags, focus, offset, shift, onO
         style={{ y: sheetRise }}
         className="ruled absolute inset-x-3.5 bottom-4 top-[6%] overflow-hidden rounded-xl border border-line bg-sheet p-4 shadow-[0_10px_20px_-14px_rgb(17_24_32/0.4)]"
       >
-        <p className="font-mono text-[0.62rem] uppercase tracking-wider" style={{ color: c.accent }}>
+        <p className="font-mono text-xs uppercase tracking-wider" style={{ color: c.accent }}>
           // summary
         </p>
         <p className="mt-1 line-clamp-3 text-[0.8rem] leading-relaxed text-ink/80">{role.summary}</p>
-        <p className="mt-3 font-mono text-[0.62rem] uppercase tracking-wider" style={{ color: c.accent }}>
+        <p className="mt-3 font-mono text-xs uppercase tracking-wider" style={{ color: c.accent }}>
           // shipped
         </p>
         <ol className="mt-1.5 space-y-1.5">
           {role.highlights.slice(0, 3).map((h, i) => (
-            <li key={h} className="flex gap-2 text-[0.75rem] leading-snug text-ink/75">
+            <li key={h} className="flex gap-2 text-xs leading-snug text-ink/75">
               <span
-                className="mt-px grid size-4 shrink-0 place-items-center rounded font-mono text-[0.58rem] font-bold"
+                className="mt-px grid size-4 shrink-0 place-items-center rounded font-mono text-micro font-bold"
                 style={{ background: c.tint, color: c.deep }}
               >
                 {i + 1}
@@ -142,7 +142,7 @@ export function HangingFile({ role, index, year, tags, focus, offset, shift, onO
             {tags.map((t) => (
               <li
                 key={t}
-                className="rounded-full border border-white/20 bg-white/15 px-2.5 py-0.5 text-[0.7rem] font-medium text-white"
+                className="rounded-full border border-white/20 bg-white/15 px-2.5 py-0.5 text-xs font-medium text-white"
               >
                 {t}
               </li>
@@ -151,7 +151,7 @@ export function HangingFile({ role, index, year, tags, focus, offset, shift, onO
         )}
 
         <div className="relative space-y-2.5">
-          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[0.68rem] text-white/75">
+          <p className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs text-white/75">
             <span className="inline-flex items-center gap-1">
               <Calendar size={11} aria-hidden="true" />
               {role.current ? 'Present' : role.period}
@@ -167,13 +167,13 @@ export function HangingFile({ role, index, year, tags, focus, offset, shift, onO
           <div className="flex items-end justify-between gap-3">
             <ul className="flex min-w-0 flex-wrap gap-1" aria-label="Stack">
               {role.stack.slice(0, 3).map((s) => (
-                <li key={s} className="inline-flex items-center gap-1 rounded-md bg-white/90 px-1.5 py-0.5 font-mono text-[0.6rem] text-ink/80">
+                <li key={s} className="inline-flex items-center gap-1 rounded-md bg-white/90 px-1.5 py-0.5 font-mono text-xs text-ink/80">
                   {skillLogos[s] && <img decoding="async" src={skillLogos[s]} alt="" className="size-2.5 object-contain" loading="lazy" />}
                   {s}
                 </li>
               ))}
               {role.stack.length > 3 && (
-                <li className="rounded-md px-1 py-0.5 font-mono text-[0.6rem] text-white/65">+{role.stack.length - 3}</li>
+                <li className="rounded-md px-1 py-0.5 font-mono text-xs text-white/65">+{role.stack.length - 3}</li>
               )}
             </ul>
             <button

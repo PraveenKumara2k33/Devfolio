@@ -80,7 +80,7 @@ export function ProjectPopModal({ project, folder, onClose }: ProjectPopModalPro
               <FolderOpen size={17} aria-hidden="true" />
             </span>
             <div className="min-w-0 flex-1">
-              <p className="truncate font-mono text-[0.68rem] text-muted">
+              <p className="truncate font-mono text-xs text-muted">
                 {folder?.folderNumber ?? 'DIR'} / {meta.filename}
                 {activeFile && <span className="text-ink"> / {activeFile.filename}</span>}
               </p>
@@ -104,7 +104,7 @@ export function ProjectPopModal({ project, folder, onClose }: ProjectPopModalPro
               aria-label="Case study files"
               className="scrollbar-none flex shrink-0 gap-1 overflow-x-auto border-b border-line bg-paper/50 p-2 md:flex-col md:overflow-y-auto md:border-b-0 md:border-r md:p-3"
             >
-              <p className="hidden px-2 pb-1 pt-1 font-mono text-[0.65rem] uppercase tracking-wider text-muted md:block">
+              <p className="hidden px-2 pb-1 pt-1 font-mono text-xs uppercase tracking-wider text-muted md:block">
                 Files
               </p>
               <SidebarItem
@@ -170,10 +170,10 @@ export function ProjectPopModal({ project, folder, onClose }: ProjectPopModalPro
                 </a>
               )}
               {!project.liveUrl && !project.repoUrl && (
-                <span className="font-mono text-[0.7rem] text-muted">{project.role} · {project.team}</span>
+                <span className="font-mono text-xs text-muted">{project.role} · {project.team}</span>
               )}
             </div>
-            <span className="hidden font-mono text-[0.7rem] text-muted sm:inline">
+            <span className="hidden font-mono text-xs text-muted sm:inline">
               <kbd className="rounded border border-line bg-sheet px-1">Esc</kbd> to close
             </span>
           </div>
@@ -218,7 +218,7 @@ function SidebarItem({ active, onClick, icon, label, sub, accent }: SidebarItemP
       </span>
       <span className="relative min-w-0">
         <span className="block truncate text-xs font-semibold md:max-w-[10.5rem]">{label}</span>
-        <span className="hidden truncate font-mono text-[0.62rem] text-muted md:block md:max-w-[10.5rem]">{sub}</span>
+        <span className="hidden truncate font-mono text-xs text-muted md:block md:max-w-[10.5rem]">{sub}</span>
       </span>
     </button>
   )
@@ -346,7 +346,7 @@ function OverviewView({
               >
                 <FileCode size={14} aria-hidden="true" className="text-folder" />
                 <span className="mt-2 block truncate text-xs font-semibold text-ink">{file.name}</span>
-                <span className="block truncate font-mono text-[0.6rem] text-muted">{file.filename}</span>
+                <span className="block truncate font-mono text-xs text-muted">{file.filename}</span>
               </motion.button>
             ))}
           </div>
@@ -387,7 +387,7 @@ function FileView({ file }: { file: ProjectFileItem }) {
       <div>
         <div className="flex flex-wrap items-center gap-2">
           <span className="tag font-semibold text-folder-deep">{file.filename}</span>
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-2.5 py-0.5 font-mono text-[0.68rem] font-semibold text-success">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-2.5 py-0.5 font-mono text-xs font-semibold text-success">
             <span className="size-1.5 rounded-full bg-success" aria-hidden="true" />
             {file.status}
           </span>

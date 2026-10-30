@@ -41,7 +41,7 @@ export function ExperienceDossier({ role, index, total, focus, prev, next, onPre
           <span aria-hidden="true">/</span>
           {role.company}
         </span>
-        <span className="mb-1.5 font-mono text-[0.68rem] text-muted">
+        <span className="mb-1.5 font-mono text-xs text-muted">
           file {num} of {String(total).padStart(2, '0')}
         </span>
       </div>
@@ -67,7 +67,7 @@ export function ExperienceDossier({ role, index, total, focus, prev, next, onPre
             <div className="min-w-0 flex-1">
               <div className="flex flex-wrap items-center gap-2">
                 {role.current && (
-                  <span className="inline-flex items-center gap-1.5 rounded-full bg-success/12 px-2.5 py-0.5 font-mono text-[0.68rem] font-semibold text-success">
+                  <span className="inline-flex items-center gap-1.5 rounded-full bg-success/12 px-2.5 py-0.5 font-mono text-xs font-semibold text-success">
                     <span className="relative flex size-1.5">
                       <span className="absolute inset-0 animate-ping rounded-full bg-success opacity-70" />
                       <span className="relative size-1.5 rounded-full bg-success" />
@@ -112,7 +112,7 @@ export function ExperienceDossier({ role, index, total, focus, prev, next, onPre
                   whileHover={reduce ? undefined : { y: -3 }}
                   className="group flex items-start gap-3 rounded-2xl border border-line bg-paper/60 p-4 text-sm leading-relaxed text-ink/85 transition-colors duration-200 hover:border-folder/40 hover:bg-sheet"
                 >
-                  <span className="grid size-6 shrink-0 place-items-center rounded-lg bg-soft font-mono text-[0.65rem] font-bold text-folder-deep transition-colors duration-200 group-hover:bg-folder group-hover:text-white">
+                  <span className="grid size-6 shrink-0 place-items-center rounded-lg bg-soft font-mono text-xs font-bold text-folder-deep transition-colors duration-200 group-hover:bg-folder group-hover:text-white">
                     {i + 1}
                   </span>
                   <span>{h}</span>
@@ -138,7 +138,7 @@ export function ExperienceDossier({ role, index, total, focus, prev, next, onPre
                     <Terminal size={13} aria-hidden="true" className="text-emerald-300" />
                     ~/{role.id} $ cat environment.env
                   </span>
-                  <span className="text-[0.65rem] text-amber-300">production</span>
+                  <span className="text-xs text-amber-300">production</span>
                 </div>
                 <dl className="space-y-1.5 p-4">
                   {role.environment.map((row, i) => (
@@ -201,7 +201,7 @@ export function ExperienceDossier({ role, index, total, focus, prev, next, onPre
           >
             <ArrowLeft size={16} aria-hidden="true" className="shrink-0 text-folder transition-transform group-hover:-translate-x-1" />
             <span className="min-w-0">
-              <span className="block font-mono text-[0.65rem] uppercase tracking-wider text-muted">Previous</span>
+              <span className="block font-mono text-xs uppercase tracking-wider text-muted">Previous</span>
               <span className="block truncate text-sm font-semibold">{prev?.company ?? 'Start'}</span>
             </span>
           </button>
@@ -212,7 +212,7 @@ export function ExperienceDossier({ role, index, total, focus, prev, next, onPre
             className="group flex items-center justify-end gap-3 border-l border-line px-5 py-4 text-right transition-colors hover:bg-sheet disabled:pointer-events-none disabled:opacity-40 sm:px-8"
           >
             <span className="min-w-0">
-              <span className="block font-mono text-[0.65rem] uppercase tracking-wider text-muted">Next</span>
+              <span className="block font-mono text-xs uppercase tracking-wider text-muted">Next</span>
               <span className="block truncate text-sm font-semibold">{next?.company ?? 'End'}</span>
             </span>
             <ArrowRight size={16} aria-hidden="true" className="shrink-0 text-folder transition-transform group-hover:translate-x-1" />

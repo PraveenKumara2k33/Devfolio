@@ -57,7 +57,7 @@ export function ShelfFolder({ project, index, focus, onOpen, onFocusRequest }: S
         >
           <div aria-hidden="true" className="paper-grain absolute inset-0 rounded-[1.75rem] opacity-50 mix-blend-overlay" />
           <div
-            className="absolute -top-8 left-6 flex h-9 items-center gap-2 rounded-t-2xl px-4 font-mono text-[0.7rem] font-semibold tracking-wide text-white/90"
+            className="absolute -top-8 left-6 flex h-9 items-center gap-2 rounded-t-2xl px-4 font-mono text-xs font-semibold tracking-wide text-white/90"
             style={{ background: meta.deep }}
           >
             <span className="text-white/55">DIR {num}</span>
@@ -78,7 +78,7 @@ export function ShelfFolder({ project, index, focus, onOpen, onFocusRequest }: S
                   {(project.modules ?? []).slice(0, 6).map((m) => (
                     <span
                       key={m}
-                      className="truncate rounded px-1.5 py-1 font-mono text-[0.55rem] font-semibold"
+                      className="truncate rounded px-1.5 py-1 font-mono text-micro font-semibold"
                       style={{ background: meta.tint, color: meta.deep }}
                     >
                       {m}
@@ -93,7 +93,7 @@ export function ShelfFolder({ project, index, focus, onOpen, onFocusRequest }: S
             <SheetHead icon={<FileCode2 size={12} />} name="modules/" color={meta.accent} />
             <ul className="mt-2 space-y-1">
               {(project.modules ?? project.features).slice(0, 5).map((m) => (
-                <li key={m} className="flex items-center gap-1.5 truncate font-mono text-[0.62rem] text-ink/75">
+                <li key={m} className="flex items-center gap-1.5 truncate font-mono text-micro text-ink/75">
                   <span aria-hidden="true" className="size-1.5 shrink-0 rounded-sm" style={{ background: meta.accent }} />
                   {m}
                 </li>
@@ -109,7 +109,7 @@ export function ShelfFolder({ project, index, focus, onOpen, onFocusRequest }: S
                 return (
                   <span
                     key={tech}
-                    className="inline-flex items-center gap-1 rounded-md border border-line bg-sheet px-1.5 py-0.5 font-mono text-[0.58rem] text-ink/80"
+                    className="inline-flex items-center gap-1 rounded-md border border-line bg-sheet px-1.5 py-0.5 font-mono text-micro text-ink/80"
                   >
                     {logo && <img decoding="async" src={logo} alt="" className="size-2.5 object-contain" loading="lazy" />}
                     {tech}
@@ -140,8 +140,8 @@ export function ShelfFolder({ project, index, focus, onOpen, onFocusRequest }: S
           </span>
 
           <div className="relative flex items-center justify-between gap-3">
-            <span className="font-mono text-[0.68rem] uppercase tracking-wider text-white/75">{project.category}</span>
-            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-0.5 font-mono text-[0.65rem] font-semibold">
+            <span className="font-mono text-xs uppercase tracking-wider text-white/75">{project.category}</span>
+            <span className="inline-flex shrink-0 items-center gap-1.5 rounded-full bg-white/15 px-2.5 py-0.5 font-mono text-xs font-semibold">
               <span className="size-1.5 rounded-full bg-emerald-300" />
               {meta.status}
             </span>
@@ -223,7 +223,7 @@ function FileSheet({ focus, spread, order, children }: FileSheetProps) {
 
 function SheetHead({ icon, name, color }: { icon: ReactNode; name: string; color: string }) {
   return (
-    <div className="flex items-center gap-1.5 border-b border-line/70 pb-1.5 font-mono text-[0.62rem] font-semibold" style={{ color }}>
+    <div className="flex items-center gap-1.5 border-b border-line/70 pb-1.5 font-mono text-micro font-semibold" style={{ color }}>
       {icon}
       {name}
     </div>

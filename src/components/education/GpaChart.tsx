@@ -25,8 +25,8 @@ export function GpaChart({ data, average, palette, run }: GpaChartProps) {
   return (
     <figure>
       <figcaption className="mb-4 flex flex-wrap items-center justify-between gap-2">
-        <span className="font-mono text-[0.7rem] font-semibold uppercase tracking-wider text-muted">Semester-wise GPA</span>
-        <span className="flex items-center gap-3 font-mono text-[0.65rem] text-muted">
+        <span className="font-mono text-xs font-semibold uppercase tracking-wider text-muted">Semester-wise GPA</span>
+        <span className="flex items-center gap-3 font-mono text-xs text-muted">
           <span className="inline-flex items-center gap-1.5">
             <span className="size-2 rounded-sm" style={{ background: palette.accent }} />
             above CGPA
@@ -42,7 +42,7 @@ export function GpaChart({ data, average, palette, run }: GpaChartProps) {
         {/* Grid */}
         {grid.map((g) => (
           <div key={g} aria-hidden="true" className="absolute inset-x-0 left-7 border-t border-line/70" style={{ bottom: `${(g / MAX) * 100}%` }}>
-            <span className="absolute -left-7 -top-2 font-mono text-[0.6rem] text-muted">{g}</span>
+            <span className="absolute -left-7 -top-2 font-mono text-xs text-muted">{g}</span>
           </div>
         ))}
 
@@ -76,7 +76,7 @@ export function GpaChart({ data, average, palette, run }: GpaChartProps) {
                   transition={{ type: 'spring', stiffness: 120, damping: 18, delay: 0.15 + i * 0.07 }}
                 />
                 <motion.span
-                  className="absolute left-1/2 z-20 mb-1 -translate-x-1/2 whitespace-nowrap rounded bg-sheet/90 px-1 font-mono text-[0.68rem] font-semibold"
+                  className="absolute left-1/2 z-20 mb-1 -translate-x-1/2 whitespace-nowrap rounded bg-sheet/90 px-1 font-mono text-xs font-semibold"
                   style={{ bottom: `${pct(d.value)}%`, color: above ? palette.deep : 'var(--color-muted)' }}
                   initial={{ opacity: reduce ? 1 : 0 }}
                   animate={{ opacity: run || reduce ? 1 : 0, y: on ? -4 : 0, scale: on ? 1.12 : 1 }}
@@ -85,7 +85,7 @@ export function GpaChart({ data, average, palette, run }: GpaChartProps) {
                   {d.value.toFixed(1)}
                   {d.value === best && <span aria-label="best semester"> ★</span>}
                 </motion.span>
-                <span className="absolute inset-x-0 top-full mt-1.5 text-center font-mono text-[0.65rem] text-muted">
+                <span className="absolute inset-x-0 top-full mt-1.5 text-center font-mono text-xs text-muted">
                   <span className="sr-only">Semester </span>
                   {d.label}
                 </span>

@@ -39,7 +39,7 @@ export function ProjectFilters({ options, value, counts, onChange }: ProjectFilt
               />
             )}
             <span className="relative">{opt}</span>
-            <span className={`relative font-mono text-[0.7rem] ${selected ? 'text-white/60' : 'text-muted'}`}>
+            <span className={`relative font-mono text-xs ${selected ? 'text-white/60' : 'text-muted'}`}>
               {counts[opt]}
             </span>
           </button>

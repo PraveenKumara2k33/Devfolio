@@ -40,13 +40,13 @@ export function SiteFooter() {
                   {profile.name}
                   <span className="text-folder">.</span>
                 </span>
-                <span className="block font-mono text-[0.68rem] text-white/50">{profile.title}</span>
+                <span className="block font-mono text-xs text-white/50">{profile.title}</span>
               </span>
             </a>
             <p className="mt-4 max-w-xs text-sm leading-relaxed">{profile.tagline}</p>
             <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Built with">
               {builtWith.map((t) => (
-                <li key={t} className="rounded-md border border-white/10 px-2 py-0.5 font-mono text-[0.65rem] text-white/55">
+                <li key={t} className="rounded-md border border-white/10 px-2 py-0.5 font-mono text-xs text-white/55">
                   {t}
                 </li>
               ))}
@@ -55,12 +55,12 @@ export function SiteFooter() {
 
           {/* Index */}
           <nav aria-label="Footer" className="md:col-span-4">
-            <p className="mb-3 font-mono text-[0.68rem] uppercase tracking-wider text-white/40">Index</p>
+            <p className="mb-3 font-mono text-xs uppercase tracking-wider text-white/40">Index</p>
             <ul className="grid grid-cols-2 gap-x-6 gap-y-1">
               {navTabs.map((t, i) => (
                 <li key={t.id}>
                   <a href={`#${t.id}`} className="group flex items-center gap-2.5 rounded-md py-1.5 text-sm transition-colors hover:text-white">
-                    <span className="font-mono text-[0.65rem] text-white/35 transition-colors group-hover:text-folder">
+                    <span className="font-mono text-xs text-white/35 transition-colors group-hover:text-folder">
                       {String(i + 1).padStart(2, '0')}
                     </span>
                     <span className="transition-transform duration-200 group-hover:translate-x-0.5">{t.label}</span>
@@ -72,7 +72,7 @@ export function SiteFooter() {
 
           {/* Elsewhere */}
           <div className="md:col-span-4">
-            <p className="mb-3 font-mono text-[0.68rem] uppercase tracking-wider text-white/40">Connect</p>
+            <p className="mb-3 font-mono text-xs uppercase tracking-wider text-white/40">Connect</p>
             <ul className="grid gap-2 sm:grid-cols-2 md:grid-cols-1">
               <li>
                 <a
@@ -84,7 +84,7 @@ export function SiteFooter() {
                   </span>
                   <span className="min-w-0 flex-1">
                     <span className="block text-sm font-medium text-white">Email</span>
-                    <span className="block truncate font-mono text-[0.68rem] text-white/50">Open mail client</span>
+                    <span className="block truncate font-mono text-xs text-white/50">Open mail client</span>
                   </span>
                   <ArrowUpRight size={15} aria-hidden="true" className="text-white/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
                 </a>
@@ -103,7 +103,7 @@ export function SiteFooter() {
                     </span>
                     <span className="min-w-0 flex-1">
                       <span className="block text-sm font-medium text-white">{s.label}</span>
-                      <span className="block truncate font-mono text-[0.68rem] text-white/50">{s.handle}</span>
+                      <span className="block truncate font-mono text-xs text-white/50">{s.handle}</span>
                     </span>
                     <ArrowUpRight size={15} aria-hidden="true" className="text-white/40 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5 group-hover:text-white" />
                   </a>

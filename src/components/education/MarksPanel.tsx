@@ -23,7 +23,7 @@ export function MarksPanel({ breakdown, palette, run, id }: MarksPanelProps) {
   return (
     <div>
       <div className="mb-3 flex items-center justify-between gap-2">
-        <p className="font-mono text-[0.7rem] font-semibold uppercase tracking-wider text-muted">Subject marks</p>
+        <p className="font-mono text-xs font-semibold uppercase tracking-wider text-muted">Subject marks</p>
         {breakdown.length > 1 && (
           <div role="group" aria-label="Mark sheet" className="inline-flex rounded-full p-0.5" style={{ background: palette.tint }}>
             {breakdown.map((b, i) => (
@@ -32,7 +32,7 @@ export function MarksPanel({ breakdown, palette, run, id }: MarksPanelProps) {
                 type="button"
                 aria-pressed={sheet === i}
                 onClick={() => setSheet(i)}
-                className="relative rounded-full px-3 py-1 font-mono text-[0.68rem] font-semibold transition-colors"
+                className="relative rounded-full px-3 py-1 font-mono text-xs font-semibold transition-colors"
                 style={{ color: sheet === i ? '#fff' : palette.deep }}
               >
                 {sheet === i && (

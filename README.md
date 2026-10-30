@@ -10,7 +10,7 @@ Built with **React 19, TypeScript, Vite, Tailwind CSS v4 and Motion**.
 
 | # | Section | What it shows |
 |---|---|---|
-| — | Loading screen | Section cards fan out of a folder, then the cover opens to the site. Plays once per browser session; any key or click skips it. |
+| — | Loading screen | Section cards fan out of a folder, then the cover opens to the site. Plays on the first visit only (about 2 seconds); any key or click skips it. |
 | — | Hero | Name, rotating tagline, quick facts and a 3D photo folder that tilts with the pointer. |
 | 01 | About | An open personnel file: ID card, interests note, memo, approach checklist and AI direction sheet. |
 | 02 | Experience | Hanging files on a timeline rail, newest first. Scroll moves the rail sideways; each file opens into a full role write-up. |

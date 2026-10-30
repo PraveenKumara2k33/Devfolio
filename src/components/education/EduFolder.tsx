@@ -49,7 +49,7 @@ export function EduFolder({ id, index, short, year, score, docs, palette, active
         style={{ background: `linear-gradient(180deg, ${palette.deep}, ${palette.accent} 150%)` }}
       >
         <span
-          className="absolute -top-6 left-4 flex h-7 items-center gap-1.5 rounded-t-xl px-3 font-mono text-[0.65rem] font-semibold text-white/90"
+          className="absolute -top-6 left-4 flex h-7 items-center gap-1.5 rounded-t-xl px-3 font-mono text-xs font-semibold text-white/90"
           style={{ background: palette.deep }}
         >
           <span className="text-white/55">{num}</span>
@@ -89,7 +89,7 @@ export function EduFolder({ id, index, short, year, score, docs, palette, active
         <span aria-hidden="true" className="paper-grain pointer-events-none absolute inset-0 opacity-60 mix-blend-overlay" />
         <span aria-hidden="true" className="absolute left-1/2 top-0 h-2 w-12 -translate-x-1/2 rounded-b-full bg-black/15" />
 
-        <span className="relative flex items-center justify-between gap-2 font-mono text-[0.6rem] uppercase tracking-wider text-white/75">
+        <span className="relative flex items-center justify-between gap-2 font-mono text-xs uppercase tracking-wider text-white/75">
           <span className="sm:hidden">{year}</span>
           <span className="hidden sm:inline">{docs} documents</span>
           {score && <span className="hidden rounded-full bg-white/15 px-2 py-0.5 normal-case tracking-normal text-white sm:inline">{score}</span>}

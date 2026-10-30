@@ -1,8 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AnimatePresence, motion, useMotionValueEvent, useScroll, useSpring } from 'motion/react'
 import { Download, Menu, X, Mail } from 'lucide-react'
 import { navTabs, profile } from '../../data/portfolio'
+import { useMediaQuery } from '../../hooks/useMediaQuery'
 import { FolderTabs } from '../folder/FolderTabs'
+
+const focusable = 'a[href], button:not([disabled]), [tabindex]:not([tabindex="-1"])'
 
 export function SiteHeader({ active }: { active: string | null }) {
   const [isOpen, setIsOpen] = useState(false)
@@ -11,8 +14,56 @@ export function SiteHeader({ active }: { active: string | null }) {
   const progress = useSpring(scrollYProgress, { stiffness: 200, damping: 30, restDelta: 0.001 })
   useMotionValueEvent(scrollY, 'change', (y) => setScrolled(y > 24))
 
+  const headerRef = useRef<HTMLElement>(null)
+  const toggleRef = useRef<HTMLButtonElement>(null)
+  const drawerRef = useRef<HTMLDivElement>(null)
+  const isDesktop = useMediaQuery('(min-width: 1024px)')
+  const menuOpen = isOpen && !isDesktop
+
+  // While the mobile menu is open: lock page scroll, close on Escape,
+  // keep Tab inside the header, and hand focus back to the toggle on close.
+  useEffect(() => {
+    if (!menuOpen) return
+    const root = document.documentElement
+    const prevOverflow = root.style.overflow
+    root.style.overflow = 'hidden'
+    const toggle = toggleRef.current
+    drawerRef.current?.querySelector<HTMLElement>(focusable)?.focus()
+
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setIsOpen(false)
+        return
+      }
+      if (e.key !== 'Tab' || !headerRef.current) return
+      const items = [toggle, ...Array.from(drawerRef.current?.querySelectorAll<HTMLElement>(focusable) ?? [])].filter(
+        (el): el is HTMLElement => el !== null,
+      )
+      if (items.length === 0) return
+      const first = items[0]
+      const last = items[items.length - 1]
+      const current = document.activeElement as HTMLElement | null
+      const inside = current !== null && items.includes(current)
+      if (e.shiftKey && (current === first || !inside)) {
+        e.preventDefault()
+        last.focus()
+      } else if (!e.shiftKey && (current === last || !inside)) {
+        e.preventDefault()
+        first.focus()
+      }
+    }
+    document.addEventListener('keydown', onKey)
+
+    return () => {
+      document.removeEventListener('keydown', onKey)
+      root.style.overflow = prevOverflow
+      toggle?.focus({ preventScroll: true })
+    }
+  }, [menuOpen])
+
   return (
     <header
+      ref={headerRef}
       className={`fixed inset-x-0 top-0 z-50 border-b backdrop-blur-md transition-[background-color,box-shadow,border-color] duration-300 ${
         scrolled ? 'border-line bg-paper/95 shadow-[0_8px_24px_-16px_rgb(17_24_32/0.35)]' : 'border-line/60 bg-paper/80 shadow-2xs'
       }`}
@@ -47,7 +98,7 @@ export function SiteHeader({ active }: { active: string | null }) {
               {profile.firstName}
               <span className="text-folder"> A.</span>
             </span>
-            <span className="font-mono text-[10px] text-muted -mt-0.5 hidden sm:block">
+            <span className="font-mono text-xs text-muted -mt-0.5 hidden sm:block">
               Full Stack Engineer
             </span>
           </div>
@@ -73,30 +124,38 @@ export function SiteHeader({ active }: { active: string | null }) {
 
           {/* Mobile Menu Toggle */}
           <button
+            ref={toggleRef}
             type="button"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={() => setIsOpen(!menuOpen)}
             className="grid size-10 place-items-center rounded-xl border border-line bg-sheet text-ink hover:bg-manila/50 shadow-2xs lg:hidden transition-colors"
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-            aria-expanded={isOpen}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            aria-controls="mobile-menu"
           >
-            {isOpen ? <X size={18} /> : <Menu size={18} />}
+            {menuOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
           </button>
         </div>
       </div>
 
       {/* Mobile Drawer */}
       <AnimatePresence>
-        {isOpen && (
+        {menuOpen && (
           <>
+            {/* Absolute, not fixed: the header's backdrop-blur makes it the containing
+                block for fixed children, so this hangs from the header's bottom edge. */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onClick={() => setIsOpen(false)}
-              className="fixed inset-0 top-18 z-40 bg-ink/20 backdrop-blur-xs lg:hidden"
+              data-lenis-prevent
+              className="absolute inset-x-0 top-full z-40 h-dvh bg-ink/20 backdrop-blur-xs lg:hidden"
               aria-hidden="true"
             />
             <motion.div
+              ref={drawerRef}
+              id="mobile-menu"
+              data-lenis-prevent
               initial={{ opacity: 0, y: -10 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
@@ -104,7 +163,7 @@ export function SiteHeader({ active }: { active: string | null }) {
               className="absolute inset-x-0 top-full z-50 max-h-[calc(100dvh-4.5rem)] overflow-y-auto border-b border-line bg-paper px-4 py-5 shadow-xl lg:hidden"
             >
               <div className="mx-auto max-w-md space-y-4">
-                <p className="px-2 font-mono text-[11px] font-medium uppercase tracking-wider text-muted">
+                <p className="px-2 font-mono text-xs font-medium uppercase tracking-wider text-muted">
                   Navigation
                 </p>
                 <motion.div
@@ -127,7 +186,7 @@ export function SiteHeader({ active }: { active: string | null }) {
                     className="flex flex-1 items-center justify-center gap-2 rounded-xl border border-line bg-sheet py-2.5 text-xs font-semibold text-ink"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Mail size={14} className="text-folder" />
+                    <Mail size={14} className="text-folder" aria-hidden="true" />
                     Get in touch
                   </a>
                   <a
@@ -137,7 +196,7 @@ export function SiteHeader({ active }: { active: string | null }) {
                     className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-folder py-2.5 text-xs font-semibold text-white shadow-2xs"
                     onClick={() => setIsOpen(false)}
                   >
-                    <Download size={14} />
+                    <Download size={14} aria-hidden="true" />
                     Download CV
                   </a>
                 </div>

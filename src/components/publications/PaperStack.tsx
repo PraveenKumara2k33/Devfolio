@@ -63,7 +63,7 @@ export function PaperStack({ pub, palette }: PaperStackProps) {
           className="absolute inset-0 flex flex-col overflow-hidden rounded-md border border-line bg-sheet shadow-[0_30px_60px_-30px_rgb(17_24_32/0.6)]"
           style={{ transformOrigin: 'bottom left' }}
         >
-          <div className="flex items-center justify-between px-5 py-2.5 font-mono text-[0.6rem] font-semibold uppercase tracking-wider text-white" style={{ background: palette.accent }}>
+          <div className="flex items-center justify-between px-5 py-2.5 font-mono text-micro font-semibold uppercase tracking-wider text-white" style={{ background: palette.accent }}>
             <span>IEEE · {pub.venue.replace(/^IEEE\s*/, '')}</span>
             <span>{pub.year}</span>
           </div>
@@ -72,15 +72,15 @@ export function PaperStack({ pub, palette }: PaperStackProps) {
             <p className="font-display text-base font-semibold leading-snug text-ink">{pub.title}</p>
             <div aria-hidden="true" className="mx-auto mt-3 h-px w-16" style={{ background: palette.accent }} />
 
-            <p className="mt-3 font-mono text-[0.55rem] font-bold uppercase tracking-wider" style={{ color: palette.deep }}>
+            <p className="mt-3 font-mono text-micro font-bold uppercase tracking-wider" style={{ color: palette.deep }}>
               Abstract
             </p>
-            <p className="mt-1 line-clamp-4 text-[0.62rem] leading-relaxed text-ink/70">{pub.summary}</p>
+            <p className="mt-1 line-clamp-4 text-micro leading-relaxed text-ink/70">{pub.summary}</p>
 
             {pub.image && (
               <div className="mt-3 overflow-hidden rounded border border-line bg-paper p-1">
                 <img decoding="async" src={pub.image} alt="" className="aspect-[16/9] w-full object-contain" loading="lazy" />
-                <p className="mt-0.5 text-center font-mono text-[0.5rem] text-muted">Fig. 1 — system overview</p>
+                <p className="mt-0.5 text-center font-mono text-micro text-muted">Fig. 1 — system overview</p>
               </div>
             )}
 
